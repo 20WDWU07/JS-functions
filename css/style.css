@@ -1,0 +1,42 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+.left{
+  min-height:200px;
+}
+
+.myForm{
+  width:60%;
+}
+
+.gradeBtn, .myResult{
+  width:60%;
+
+}
+
+.myFormElements{
+  font-size : 1.2rem;
+}
+
+.myHeading{
+  /* position : sticky;
+  top : 20px; */
+}
+
+.myResult{
+  top : 0;
+  left: 0;
+  position : fixed;
+  width: 100vw;
+  height:100vh;
+}
+@media screen and (min-width: 769px) {
+  .left{
+    min-height:100vh;
+  }
+  .myFormElements{
+    font-size : 2rem;
+  }
+}
