@@ -94,9 +94,21 @@ $(document).ready(function(){
     // displaying results in the result container (modal)
     $('#result').append('Total = ' + totalMarks + '<br>' );
     $('#result').append('Average = ' + averageMarks + '<br>');
-    $('#result').append('Highest Mark = ' + highestMark[0] + '<br>');
-    $('#result').append('Highest in Module ' + highestMark[1] + '<br>');
     $('#result').append('Grade = ' + grade + '<br>');
+
+    $('#result').append('Highest Mark = ' + highestMark[0] + '<br>');
+
+      $('#result').append('Highest in Module ' + highestMark[1] );
+
+      if (highestMark.length == 5) {
+        $('#result').append(', ' + highestMark[2] + ', ' + highestMark[3] + ' and ' + highestMark[4]);
+      };
+      if (highestMark.length == 4) {
+        $('#result').append(', ' + highestMark[2] + ' and ' + highestMark[3]);
+      };
+      if (highestMark.length == 3) {
+        $('#result').append(' and ' + highestMark[2] );
+      };
 
   }; //end of else
 
@@ -137,18 +149,20 @@ function findHighest(scores){
     console.log(scores[i]);
     if (scores[i] >= high) {
       high = scores[i];
-      moduleNumber = i ;
+      // moduleNumber = i ;
 
     }
   }
-  console.log(high, moduleNumber+1);
-  highResult.push(high);
-  highResult.push(moduleNumber+1);
-  console.log(highResult);
-  return (highResult);
-}
 
-//1.feedback to users if mark is not in the range-done
-//2. what if highest mark is in more than 1 module?
-//3. Without refresh if continued, the module number adds up to the previous
-//4. take care of marks array when refreshed - done
+  console.log(high);
+  highResult.push(high);
+
+    for (i = 0; i < scores.length; i++){
+      if (scores[i] == high) {
+        highResult.push(i+1);
+        console.log(highResult);
+      }
+    }
+
+  return (highResult); //an array
+}
